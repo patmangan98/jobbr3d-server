@@ -6,7 +6,7 @@ const router = express.Router()
 
 //create print
 router.post('/prints', (req, res, next) => {
-    const customerId = req.body.print.customerID
+    const customerId = req.body.print.customerId
     const print = req.body.print
     Customer.findById(customerId)
     .then((customer) => {
@@ -27,11 +27,11 @@ router.patch('/prints/:printId', (req, res, next) => {
         print.set(printBody)
         return customer.save()
     })
-    .then(() => res.status(204))
+    .then((customer) => res.status(204).json({customer: customer}))
     .catch(next)
 })
 
-//delete
+
 router.delete('/prints/:printId', (req, res, next) => {
     const customerId = req.body.print.customerId
     Customer.findById(customerId)
