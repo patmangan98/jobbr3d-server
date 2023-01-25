@@ -21,9 +21,9 @@ const printSchema = new Schema(
             type: Boolean,
             default: false, 
             required: true, 
-        }
+        },
 }) 
 
-const Print = mongoose.model('print', printSchema)
+const Print = mongoose.model('Print', printSchema)
 
 module.exports = Print
