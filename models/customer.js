@@ -25,10 +25,11 @@ const customerSchema = new Schema(
         //     ref: 'User',
         //     unique: true
         // },
-        prints : {
-            type: [printSchema.schema],
-            required : false
-        }
+        prints :  {
+            type : [printSchema.schema],
+            required: false 
+        },
+        
 })
 
 

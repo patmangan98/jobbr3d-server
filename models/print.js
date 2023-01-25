@@ -26,4 +26,4 @@ const printSchema = new Schema(
 
 const Print = mongoose.model('print', printSchema)
 
-module.exports = Print 
+module.exports = Print
