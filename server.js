@@ -7,6 +7,7 @@ const PORT = 9001
 //require the routes
 const customerRoutes = require('./routes/customer-routes')
 const printRoutes = require('./routes/print-routes')
+const userRoutes = require('./routes/user-routes')
 //user routes
 
 //setting up mongoose
@@ -24,7 +25,7 @@ const app = express()
 app.use(express.json())
 
 app.use(customerRoutes)
-//add user routes
+app.use(userRoutes)
 app.use(printRoutes)
 
 app.listen(PORT, () => {
