@@ -20,16 +20,18 @@ const customerSchema = new Schema(
             type: String,
             required: false, 
         },
-        owner: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-            unique: true
-        },
+        // owner: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: 'User',
+        //     unique: true
+        // },
         prints : {
             type: [printSchema.schema],
             required : false
         }
 })
+
+
 
 const Customer = mongoose.model('Customer', customerSchema)
 module.exports = Customer
