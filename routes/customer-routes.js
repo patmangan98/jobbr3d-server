@@ -18,9 +18,9 @@ router.get('/customers', requireToken, (req, res, next) => {
 
 //create customer
 router.post('/customers', requireToken, (req, res, next) => {
-    console.log(req.user)
+    const user = req.user._id
     const customer = req.body.customer
-    customer.owner = req.user._id
+    customer.owner = user
     Customer.create(customer)
     .then((customer) => {
         res.status(201).json({customer :customer})
@@ -41,7 +41,7 @@ router.patch('/customers/:id', requireToken, (req, res, next) => {
     .then((customer) => {
         return customer.updateOne(req.body.customer)
     })
-    .then(() => res.sendStatus(204))
+    .then(() => res.sendStatus(201))
     .catch(next)
 })
 
