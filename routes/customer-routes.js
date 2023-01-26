@@ -7,8 +7,8 @@ const { requireToken } = require('../config/auth')
 
 //index customers
 router.get('/customers', requireToken, (req, res, next) => {
-    
-    Customer.find(req.user._id)
+    const user = req.user._id
+    Customer.find({ owner: `${user}` })
         .then((customers) => {
             return customers.map((customer) => customer)
         })

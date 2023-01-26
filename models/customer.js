@@ -23,7 +23,6 @@ const customerSchema = new Schema(
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            unique: true
         },
         prints :  {
             type : [printSchema.schema],
