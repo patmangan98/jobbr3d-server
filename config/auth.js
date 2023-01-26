@@ -3,7 +3,7 @@ const passport = require('passport')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const secret = process.env.JWT_SECRET || 'enderDefender_keep_on_jobbing'
+const secret = process.env.JWT_SECRET || 'enderBender'
 const { Strategy, ExtractJwt } = require('passport-jwt')
 
 const opts = {
