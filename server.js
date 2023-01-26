@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const db = require('./config/db')
-const PORT = 9001
+const PORT = 3000
 
 //require the routes
 const customerRoutes = require('./routes/customer-routes')
