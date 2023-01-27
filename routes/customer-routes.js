@@ -7,8 +7,8 @@ const { requireToken } = require('../config/auth')
 
 //index customers
 router.get('/customers', requireToken, (req, res, next) => {
-    const user = req.user._id
-    Customer.find({ owner: `${user}` })
+    // const user = req.user._id
+    Customer.find()
         .then((customers) => {
             return customers.map((customer) => customer)
         })
@@ -20,7 +20,7 @@ router.get('/customers', requireToken, (req, res, next) => {
 router.post('/customers', requireToken, (req, res, next) => {
     const user = req.user._id
     const customer = req.body.customer
-    customer.owner = user
+    customer.owner = user._id
     Customer.create(customer)
     .then((customer) => {
         res.status(201).json({customer :customer})
@@ -29,7 +29,7 @@ router.post('/customers', requireToken, (req, res, next) => {
 })
 
 //show customer 
-router.get('/customers/:id', requireToken, (req, res, next) => {
+router.get('/customers/:id', requireToken,  (req, res, next) => {
     Customer.findById(req.params.id)
     .then((customer) => res.status(200).json({ customer: customer}))
     .catch(next)
@@ -41,7 +41,7 @@ router.patch('/customers/:id', requireToken, (req, res, next) => {
     .then((customer) => {
         return customer.updateOne(req.body.customer)
     })
-    .then(() => res.sendStatus(201))
+    .then(() => res.sendStatus(204))
     .catch(next)
 })
 
