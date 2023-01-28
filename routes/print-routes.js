@@ -5,7 +5,7 @@ const Customer = require('../models/customer')
 const router = express.Router()
 
 //create print
-router.post('/prints',   (req, res, next) => {
+router.post('/prints', requireToken, (req, res, next) => {
     const customerId = req.body.print.customerId
     const print = req.body.print
     Customer.findById(customerId)
@@ -18,7 +18,7 @@ router.post('/prints',   (req, res, next) => {
 })
 
 //update print
-router.patch('/prints/:printId',  (req, res, next) => {
+router.patch('/prints/:printId', requireToken, (req, res, next) => {
     const customerId = req.body.print.customerId
     const printBody = req.body.print
     Customer.findById(customerId)
@@ -32,7 +32,7 @@ router.patch('/prints/:printId',  (req, res, next) => {
 })
 
 
-router.delete('/prints/:printId',  (req, res, next) => {
+router.delete('/prints/:printId', requireToken,  (req, res, next) => {
     const customerId = req.body.print.customerId
     Customer.findById(customerId)
     .then((customer) => {
@@ -42,5 +42,7 @@ router.delete('/prints/:printId',  (req, res, next) => {
     .then(() => res.status(204))
     .catch(next)
 })
+
+
 
 module.exports = router
