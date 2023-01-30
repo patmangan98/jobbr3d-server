@@ -1,7 +1,7 @@
 const express = require('express')
 const { requireToken } = require('../config/auth')
 const Customer = require('../models/customer')
-const Print = require('../models/print')
+
 
 const router = express.Router()
 
@@ -17,8 +17,6 @@ router.post('/prints', requireToken, (req, res, next) => {
     .then((customer) => res.status(204).json({customer: customer}))
     .catch(next)
 })
-
-//update print
 
 
 router.patch('/prints/:printId', requireToken, (req, res, next) => {
