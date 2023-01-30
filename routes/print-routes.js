@@ -1,6 +1,7 @@
 const express = require('express')
 const { requireToken } = require('../config/auth')
 const Customer = require('../models/customer')
+const Print = require('../models/print')
 
 const router = express.Router()
 
@@ -18,6 +19,8 @@ router.post('/prints', requireToken, (req, res, next) => {
 })
 
 //update print
+
+
 router.patch('/prints/:printId', requireToken, (req, res, next) => {
     const customerId = req.body.print.customerId
     const printBody = req.body.print
@@ -32,8 +35,9 @@ router.patch('/prints/:printId', requireToken, (req, res, next) => {
 })
 
 
-router.delete('/prints/:printId', requireToken,  (req, res, next) => {
-    const customerId = req.body.print.customerId
+router.delete('/prints/:printId/:customerId', requireToken,  (req, res, next) => {
+    const customerId = req.params.customerId
+    console.log(customerId)
     Customer.findById(customerId)
     .then((customer) => {
         customer.prints.id(req.params.printId).remove()
@@ -42,7 +46,6 @@ router.delete('/prints/:printId', requireToken,  (req, res, next) => {
     .then(() => res.status(204))
     .catch(next)
 })
-
 
 
 module.exports = router
