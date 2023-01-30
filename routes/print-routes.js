@@ -18,7 +18,7 @@ router.post('/prints', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-
+//update print
 router.patch('/prints/:printId', requireToken, (req, res, next) => {
     const customerId = req.body.print.customerId
     const printBody = req.body.print
@@ -32,7 +32,7 @@ router.patch('/prints/:printId', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-
+//delete print
 router.delete('/prints/:printId/:customerId', requireToken,  (req, res, next) => {
     const customerId = req.params.customerId
     console.log(customerId)
