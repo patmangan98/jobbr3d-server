@@ -11,14 +11,15 @@ const userRoutes = require('./routes/user-routes')
 //user routes
 
 //setting up mongoose
-
 mongoose.set('strictQuery', true)
 
-// mongoose.connect(db)
-mongoose.connect(db,  {
-    useNewUrlParser: true, 
-    useUnifiedToplogy: true, 
-})
+mongoose.connect(db)
+
+//this caused issues with my version of mongoose
+// mongoose.connect(db,  {
+//     useNewUrlParser: true, 
+//     useUnifiedToplogy: true, 
+// })
 
 const app = express()
 app.use(cors({ origin: process.env.PORT || `http://127.0.0.1:5500` }))

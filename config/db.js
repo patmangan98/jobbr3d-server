@@ -9,4 +9,4 @@ const localDb = process.env.TESTENV ? database.test : database.development
 
 const currentDb = process.env.DB_URI || localDb
 
-module.exports = currentDb
+module.exports = currentDb 
