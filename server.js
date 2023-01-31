@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const db = require('./config/db')
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 //require the routes
 const customerRoutes = require('./routes/customer-routes')
@@ -14,14 +14,14 @@ const userRoutes = require('./routes/user-routes')
 
 mongoose.set('strictQuery', true)
 
-mongoose.connect(db)
-// mongoose.connect(db,  {
-//     useNewUrlParser: true, 
-//     useUnifiedToplogy: true, 
-// })
+// mongoose.connect(db)
+mongoose.connect(db,  {
+    useNewUrlParser: true, 
+    useUnifiedToplogy: true, 
+})
 
 const app = express()
-app.use(cors({ origin: `http://127.0.0.1:5500` }))
+app.use(cors({ origin: process.env.PORT || `http://127.0.0.1:5500` }))
 app.use(express.json())
 
 app.use(customerRoutes)

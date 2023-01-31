@@ -12,11 +12,12 @@
   "name": "jobbr3d-server",
   "description": "A 3D printing print tracking app for freelancers to keep their jobs organized. It will allow them to keep track of the jobs, customers, and eventually track their materials. Down the road, I want it to be able to help them with tracking their profits and expenses. I also want to intergrate it with octoprint, so they can manage their printers remotely within the app. This would allow esentially have all the most important aspects of there business in one place. //revise this later.",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server" : "nodemon server.js"
+    "server" : "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "Patrick Mangan",
   "license": "ISC"

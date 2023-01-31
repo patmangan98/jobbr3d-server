@@ -20,7 +20,7 @@ const userSchema = new Schema(
             transform: (_doc, user) => {
                 delete user.password 
                 return user 
-            }
+            },
         }
     }
 )
