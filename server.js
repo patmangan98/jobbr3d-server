@@ -13,7 +13,20 @@ const userRoutes = require('./routes/user-routes')
 //setting up mongoose
 mongoose.set('strictQuery', true)
 
-mongoose.connect(db)
+// mongoose.connect(db)
+
+mongoose.connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => { console.log('successful connection') }).catch((e) => {
+    console.log('not connected')
+})
+
+
+
+
+
+
 
 //this caused issues with my version of mongoose
 // mongoose.connect(db,  {
