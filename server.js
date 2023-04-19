@@ -22,10 +22,10 @@ mongoose.connect(db, {
     console.log('not connected')
 })
 
-
-
-
-
+const corsOptions = {
+    origin: 'https://jobbr3d-client.onrender.com',
+    optionsSuccessStatus: 200
+  };
 
 
 //this caused issues with my version of mongoose
@@ -35,7 +35,9 @@ mongoose.connect(db, {
 // })
 
 const app = express()
-app.use(cors({ origin: process.env.PORT || `http://127.0.0.1:5500` }))
+// app.use(cors({ origin: process.env.PORT || `http://127.0.0.1:5500` }))
+
+app.use(cors(corsOptions))
 app.use(express.json())
 
 app.use(customerRoutes)
